@@ -330,7 +330,8 @@ update_server_list() {
 
     cleanup_temp
     if command_exists "curl"; then
-        curl -L "$ip_vanish_url" -o "$temp_file" 2>/dev/null
+       temp_file=$(curl -L "$ip_vanish_url" 2>/dev/null)
+       # curl -L "$ip_vanish_url" -o "$temp_file" 2>/dev/null
     elif command_exists "wget"; then
         wget "$ip_vanish_url" -O "$temp_file" 2>/dev/null
     else
