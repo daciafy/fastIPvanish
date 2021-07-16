@@ -1,0 +1,11 @@
+#!/bin/bash
+openvpn_pid=$(pidof openvpn)
+    if [ $openvpn_pid ] ; then
+        echo -n "Stopping existing openvpn process ..."
+        kill $openvpn_pid
+        while kill -0 "$openvpn_pid" 2> /dev/null; do
+            sleep 1
+            echo -n "."
+        done
+	echo " Done"
+    fi
